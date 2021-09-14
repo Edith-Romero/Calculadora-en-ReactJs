@@ -1,13 +1,15 @@
-import React from 'react'
-import Calculadora from './componentes/Calculadora'
+import React, { Fragment } from 'react'
+import Calculator from './componentes/Calculator'
 
 function App() {
   
   return (
-    <div>
-      <h1>Calculadora</h1>
-        <Calculadora/>
-    </div>
+    <Fragment>
+      <div>
+        <h1>Calculadora</h1>
+          <Calculator/>
+      </div>
+    </Fragment>
   );
 }
 
