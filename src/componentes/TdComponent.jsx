@@ -1,4 +1,5 @@
 import { Fragment} from "react";
+import { Button, Td } from "../styled"
 
 const TdComponent = ({button,numbers,setNumbers,operacion,setOperacion,setViewHistory}) => {
 
@@ -24,7 +25,9 @@ const sendNumber = (button) => {
         }
 
         let calc = eval(numbers)
-        setNumbers(calc.toString()) //      
+        // To.String lo uso para convertir calc de numero a string, para manipularlo con las distintas funciones de un campo tipo string.
+        // ya que sino romperia como por ejemplo con la funcion substring
+        setNumbers(calc.toString()) 
         
         let objeto = {
             operacion: numbers,
@@ -73,13 +76,13 @@ const sendNumber = (button) => {
 
     return ( 
         <Fragment>
-                <td>
-                    <button
+                <Td>
+                    <Button
                         type = 'submit'                    
                         onClick={() => sendNumber(button)}>
                         {button}
-                    </button>
-                </td>
+                    </Button>
+                </Td>
         </Fragment>
     );
 }

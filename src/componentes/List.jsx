@@ -7,7 +7,7 @@ const List = ({operacion,setOperacion, setNumbers,setViewHistory}) => {
             setOperacion(eliminarValor);
         }
 
-    const restoreOperacion = (restore) =>{
+    const restoreOperation = (restore) =>{
         setNumbers(restore);
         console.log(restore)
     } 
@@ -23,9 +23,9 @@ const List = ({operacion,setOperacion, setNumbers,setViewHistory}) => {
                     <h2>{history.operacion}</h2>
                     <h1>{history.resultado}</h1>
                     <button
-                        onClick={()=>{restoreOperacion(history.resultado)}}
+                        onClick={()=>{restoreOperation(history.resultado)}}
                     >
-                        RECUPERAR
+                        RESTORE
                     </button>
                     <button 
                         onClick={()=> {eliminarOperacion(index)}}

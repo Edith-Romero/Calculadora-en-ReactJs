@@ -2,7 +2,7 @@ import React, {Fragment, useState,useEffect} from 'react';
 import Numbers from './Numbers';
 import Display from './Display';
 import List from './List';
-// import { Fondo } from 'styled'
+import {Fondo} from '../styled'
 
 
 const Calulator = () => {
@@ -25,27 +25,30 @@ const Calulator = () => {
     return (
         <Fragment>
             <div className="container">
-                {/* Divido la Calculadora en dos componentes */}
-                <Display
-                numbers={numbers}
-                />
-                {viewhistory ?                
-                <Numbers
-                    numbers = {numbers}
-                    setNumbers = {setNumbers}
-                    operacion = {operacion}
-                    setOperacion ={setOperacion}
-                    setViewHistory = {setViewHistory}
-                /> : 
-                <List
-                    operacion={operacion}
-                    setOperacion ={setOperacion}
-                    setNumbers={setNumbers}
-                    setViewHistory = {setViewHistory}
-                />
-                }
+                <Fondo>
+                    {/* Divido la Calculadora en dos componentes */}
+                    <Display
+                    numbers={numbers}
+                    />
+                    {viewhistory ?                
+                    <Numbers
+                        numbers = {numbers}
+                        setNumbers = {setNumbers}
+                        operacion = {operacion}
+                        setOperacion ={setOperacion}
+                        setViewHistory = {setViewHistory}
+                    /> : 
+                    <List
+                        operacion={operacion}
+                        setOperacion ={setOperacion}
+                        setNumbers={setNumbers}
+                        setViewHistory = {setViewHistory}
+                    />
+                    }
+                </Fondo>
             </div>
         </Fragment>    
     );
 }
 export default Calulator;
+
