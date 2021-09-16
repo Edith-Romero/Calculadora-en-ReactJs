@@ -36,28 +36,25 @@ export const Button = styled.button`
     color: white;
   }
 `;
-
-export const Td = styled.td`
-  text-align: center;
-  width: 25%;
-`;
-
-export const Table = styled.table`
-  background: #000000;
-  border-color: #000000;
-`;
-
-export const Button = styled.button`
-  border-radius: 100%;
+export const ButtonMemory = styled.button`
   border-color: white;
-  background: #212529;
-  width: 100px;
-  height: 100px;
-  font-size: 53px;
+  background: #495057;
+  width: 120px;
+  height: 40px;
+  font-size: 15px;
+  margin-bottom: auto;
   color: white;
 
   &:hover {
     background-color: #f18d09;
     color: white;
   }
+`;
+export const Td = styled.td`
+  text-align: center;
+  width: 25%;
+`;
+export const Table = styled.table`
+  background: #000000;
+  border-color: #000000;
 `;
