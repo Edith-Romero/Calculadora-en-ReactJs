@@ -3,7 +3,7 @@ import { Button, Td } from "../styled"
 import Error from "./Error";
 import PropTypes from 'prop-types';
 
-const TdComponent = ({ button, numbers, setNumbers, operation, setOperation, setViewHistory, setError }) => {
+const TdComponent = ({ button, numbers, setNumbers, operation, setOperation, setViewHistory,setMessage, setError }) => {
 
     const sendNumber = (button) => {
         // Creo la variable signos para poder realizar validaciones, al primer ingreso de dato
@@ -32,6 +32,14 @@ const TdComponent = ({ button, numbers, setNumbers, operation, setOperation, set
 
             // Se hace calculo con la funcion eval() la cual evalúa el código del string y ejecuta la devolucion de una operacion aritmetica
             let calc = eval(numbers)
+                        
+            // Cuando la division es entre 0 me va a devolver Infinity, con esto seteo a cero y con el return no permito que me guarde en memoria.
+            if(calc == 'Infinity' || isNaN(calc) ){
+                setNumbers('0')
+                setError(true)
+                setMessage("No puedo dividir entre 0")
+                return;
+            }    
 
             // To.String lo uso para convertir calc de numero a string, para manipularlo con las distintas funciones de un campo tipo string
             // ya que sino romperia como por ejemplo con la funcion substring

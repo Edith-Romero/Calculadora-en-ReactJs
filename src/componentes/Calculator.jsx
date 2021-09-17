@@ -25,6 +25,7 @@ const Calculator = () => {
     const [viewhistory, setViewHistory] = useState(true)
     // Este State se crea con la intencion de poder crear mensajes de error de manera dinamica reutilizando el componente
     const [error, setError] = useState(false);
+    const [message,setMessage] = useState("Operacion no valida intente de nuevo");
 
     // El useEffect permite guarda en localStore cuando el State Operation cambia, esto sucede cuando se le da al igual(=)
     useEffect(() => {
@@ -36,7 +37,7 @@ const Calculator = () => {
             <div className="container">
                 <div>
                     {/* La finalidad de este mensaje es que al ingresar el signo = igual despues de un signo me indique que es un error*/}
-                    {error ? <Error mensaje="Operacion no valida intente de nuevo" /> : null}
+                    {error ? <Error mensaje={message} /> : null}
                 </div>
                 <Fondo>
                     {/*Aplico componentes condicionales para cargar el componente Numbers o el History al pulsar el boton ME (Memoria/historial)
@@ -53,6 +54,7 @@ const Calculator = () => {
                             setOperation={setOperation}
                             setViewHistory={setViewHistory}
                             setError={setError}
+                            setMessage={setMessage}
                         /> :
                         <History
                             operation={operation}

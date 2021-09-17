@@ -3,7 +3,7 @@ import TdComponent from "./TdComponent";
 import PropTypes from 'prop-types';
 
 
-const TrComponent = ({row,numbers,setNumbers,operation,setOperation,setViewHistory,setError}) => {
+const TrComponent = ({row,numbers,setNumbers,operation,setOperation,setViewHistory,setMessage,setError}) => {
     return ( 
         <Fragment>
             <tr>
@@ -18,6 +18,7 @@ const TrComponent = ({row,numbers,setNumbers,operation,setOperation,setViewHisto
                         operation = {operation}
                         setOperation ={setOperation}
                         setViewHistory = {setViewHistory}
+                        setMessage={setMessage}
                         setError={setError}
                     />
                 ))}
