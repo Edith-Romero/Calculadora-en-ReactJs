@@ -39,6 +39,7 @@ Numbers.propTypes = {
     operation: PropTypes.array.isRequired,
     setOperation: PropTypes.func.isRequired,
     setViewHistory: PropTypes.func.isRequired,
+    setMessage: PropTypes.func.isRequired,
     setError: PropTypes.func.isRequired,
 }
 export default Numbers;

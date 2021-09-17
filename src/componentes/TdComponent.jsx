@@ -3,7 +3,7 @@ import { Button, Td } from "../styled"
 import Error from "./Error";
 import PropTypes from 'prop-types';
 
-const TdComponent = ({ button, numbers, setNumbers, operation, setOperation, setViewHistory,setMessage, setError }) => {
+const TdComponent = ({ button, numbers, setNumbers, operation, setOperation, setViewHistory,setMessage,setError }) => {
 
     const sendNumber = (button) => {
         // Creo la variable signos para poder realizar validaciones, al primer ingreso de dato
@@ -20,6 +20,7 @@ const TdComponent = ({ button, numbers, setNumbers, operation, setOperation, set
         else if (button === '=') {
             // seteamos la variable a su estado inicial para eliminar el error de la pantalla
             setError(false)
+            setMessage("Operacion no valida intente de nuevo")
 
             // obtenemos el ultima valor de la cadena
             let lastElement = numbers.substr(-1)
@@ -34,9 +35,11 @@ const TdComponent = ({ button, numbers, setNumbers, operation, setOperation, set
             let calc = eval(numbers)
                         
             // Cuando la division es entre 0 me va a devolver Infinity, con esto seteo a cero y con el return no permito que me guarde en memoria.
+            // la condicion de isNaN la realizo porque al dividir 0/0 me da Nan
             if(calc == 'Infinity' || isNaN(calc) ){
                 setNumbers('0')
                 setError(true)
+                // Al dividir entre 0 envio un mensaje al usuario
                 setMessage("No puedo dividir entre 0")
                 return;
             }    
@@ -53,9 +56,15 @@ const TdComponent = ({ button, numbers, setNumbers, operation, setOperation, set
             //Ejecuto un Spread Operator para guardar en el arreglo el nuevo objeto creado   
             setOperation([...operation, object])
         }
-        // Esta condicion me permite borrar el ultimo elemento que tenga la cadena
-        else if (button === 'C') {
-            setNumbers(numbers.substring(0, numbers.length - 1))
+        else if (button === 'C') {     
+            // Esta condicion sustituye el unico elemento de la cadena por 0    
+            if(numbers.length === 1){
+                setNumbers('0')
+            }
+            // Esta condicion me permite borrar el ultimo elemento que tenga la cadena hasta que le quede solo un elemento
+            else{
+                setNumbers(numbers.substring(0, numbers.length - 1))
+            }
         }
         else if (button === 'ME') {
             setViewHistory(false)
@@ -126,6 +135,7 @@ TdComponent.propTypes = {
     operation: PropTypes.array.isRequired,
     setOperation: PropTypes.func.isRequired,
     setViewHistory: PropTypes.func.isRequired,
+    setMessage: PropTypes.func.isRequired,
     setError: PropTypes.func.isRequired,
 }
 

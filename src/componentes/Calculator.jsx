@@ -37,7 +37,7 @@ const Calculator = () => {
             <div className="container">
                 <div>
                     {/* La finalidad de este mensaje es que al ingresar el signo = igual despues de un signo me indique que es un error*/}
-                    {error ? <Error mensaje={message} /> : null}
+                    {error ? <Error Message={message} /> : null}
                 </div>
                 <Fondo>
                     {/*Aplico componentes condicionales para cargar el componente Numbers o el History al pulsar el boton ME (Memoria/historial)
